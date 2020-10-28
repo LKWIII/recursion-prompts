@@ -11,24 +11,32 @@ var factorial = function (n) {
   if (n < 0) {
     return null;
   }
-  //if n is equal to 0 return 1
-  if (n === 0) {
+  //if n is equal 0 or 1 return 1
+  if (n === 1 || n === 0) {
     return 1;
-  }
-  //if n is equal to one
-  if (n === 1) {
-    return n;
     //otherwise invoke function with n minus 1 until n equals base condition
   } else {
     return n * factorial(n - 1);
   }
-  //if function value is greater greater than 1
-  // call function again with n - 1
 };
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function (array) {
+  //return 0 for an empty array
+  if (!array.length) {
+    return 0;
+  }
+  // index variable
+  var index = array.length - 1;
+  // if index is equal to 0 return value at index;
+  if (index === 0) {
+    return array[index];
+    // else return value at index + invoke function on a copy of array minus last index;
+  } else {
+    return array[index] + sum(array.slice(0, index));
+  }
+
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
