@@ -65,7 +65,7 @@ var isEven = function (n) {
   //if number is equal to zero return true
   if (n === 0) {
     return true;
-    // else if number is equal to 1 return fals
+    // else if number is equal to 1 return false
   } else if (n === 1) {
     return false;
     // else invoke function on n - 2
@@ -79,6 +79,24 @@ var isEven = function (n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function (n) {
+  //base condition:
+  //if input equal to zero
+  if (n === 0) {
+    return 0;
+  }
+  //recursive conditions:
+  //if number is positive
+  if (n > 0) {
+    //set start number as n minus one
+    var num = n - 1;
+    return num + sumBelow(num);
+  } else {
+    //if number is negative
+    //set start number as n plus one
+    var num = n + 1;
+    return num + sumBelow(num);
+  }
+
 };
 
 // 6. Get the integers within a range (x, y).
