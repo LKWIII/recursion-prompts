@@ -46,7 +46,6 @@ var arraySum = function (array) {
   if (!array.length) {
     return 0;
   }
-
   // if first index value is an array
   if (Array.isArray(array[0])) {
     // invoke function on array(at index) + invoke function on rest of parent array
@@ -54,42 +53,26 @@ var arraySum = function (array) {
   } else {
     // return the value at index + invoke funtion on rest of array
     return array[0] + arraySum(array.slice(1));
-
   }
 
 };
 
-// var arraySum = function (array) {
-//   //return 0 for an empty array
-//   if (!array.length) {
-//     return 0;
-//   }
-//   // index variable
-//   arrIndex = array.length - 1;
-//   // if index value is an array
-//   if (Array.isArray(array[arrIndex])) {
-//     // return the value of invoke the arraySum funtion on array at index
-//     return arraySum(array[arrIndex]);
-//     // else if array index value is not an array
-//   } else {
-//     // if index is equal to zero
-//     if (arrIndex === 0) {
-//       //return the value at index
-//       return array[arrIndex];
-//       //if array index is not equal to zero
-//     } else {
-//       // return value at index + invoke function of copy of array minus this index
-//       console.log(array[arrIndex]);
-//       return array[arrIndex] + arraySum(array.slice(0, arrIndex));
-//     }
-//   }
-
-
-// };
-
 
 // 4. Check if a number is even.
 var isEven = function (n) {
+  //should work with negative numbers
+  n = Math.abs(n);
+  //if number is equal to zero return true
+  if (n === 0) {
+    return true;
+    // else if number is equal to 1 return fals
+  } else if (n === 1) {
+    return false;
+    // else invoke function on n - 2
+  } else {
+    return isEven(n - 2);
+  }
+
 };
 
 // 5. Sum all integers below a given integer.
