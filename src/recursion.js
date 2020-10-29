@@ -32,7 +32,7 @@ var sum = function (array) {
   // if index is equal to 0 return value at index;
   if (index === 0) {
     return array[index];
-    // else return value at index + invoke function on a copy of array minus last index;
+    // else return value at index + invoke function on a copy of array minus this index
   } else {
     return array[index] + sum(array.slice(0, index));
   }
@@ -42,7 +42,51 @@ var sum = function (array) {
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function (array) {
+  //return 0 for an empty array
+  if (!array.length) {
+    return 0;
+  }
+
+  // if first index value is an array
+  if (Array.isArray(array[0])) {
+    // invoke function on array(at index) + invoke function on rest of parent array
+    return arraySum(array[0]) + arraySum(array.slice(1));
+  } else {
+    // return the value at index + invoke funtion on rest of array
+    return array[0] + arraySum(array.slice(1));
+
+  }
+
 };
+
+// var arraySum = function (array) {
+//   //return 0 for an empty array
+//   if (!array.length) {
+//     return 0;
+//   }
+//   // index variable
+//   arrIndex = array.length - 1;
+//   // if index value is an array
+//   if (Array.isArray(array[arrIndex])) {
+//     // return the value of invoke the arraySum funtion on array at index
+//     return arraySum(array[arrIndex]);
+//     // else if array index value is not an array
+//   } else {
+//     // if index is equal to zero
+//     if (arrIndex === 0) {
+//       //return the value at index
+//       return array[arrIndex];
+//       //if array index is not equal to zero
+//     } else {
+//       // return value at index + invoke function of copy of array minus this index
+//       console.log(array[arrIndex]);
+//       return array[arrIndex] + arraySum(array.slice(0, arrIndex));
+//     }
+//   }
+
+
+// };
+
 
 // 4. Check if a number is even.
 var isEven = function (n) {
