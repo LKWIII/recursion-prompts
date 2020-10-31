@@ -159,13 +159,13 @@ var exponent = function (base, exp) {
 // powerOfTwo(10); // false
 var powerOfTwo = function (n) {
   //returns a boolean
-  //if number is greater than or equal to 2
+  //if number is greater 1
   //invoke function on n / 2
   //if number is equal to 1
   //return true
   // else if number is less than 1
   //return false
-  if (n >= 2) {
+  if (n > 1) {
     return powerOfTwo(n / 2);
   } else if (n === 1) {
     return true;
@@ -177,10 +177,40 @@ var powerOfTwo = function (n) {
 
 // 9. Write a function that reverses a string.
 var reverse = function (string) {
+  // if string length is 0
+  // return and empty string
+  // else return last char + invoke function on copy of string minus last char
+  if (!string.length) {
+    return '';
+  } else {
+    return string[string.length - 1] + reverse(string.slice(0, string.length - 1));
+  }
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function (string) {
+  //returns a boolean
+
+  //should ignore spaces and case
+  var str = string.split(' ').join('').toLowerCase();
+
+  //base condition:
+  //if string is empty or one char (odd number of characters in string)
+  //return true
+  if (str.length === 0 || str.length === 1) {
+    return true;
+  }
+
+  // if first char is equal to last char
+  //return an invocation of slice minus first and last char
+  // else if first char is NOT equal to last
+  //return false
+  if (str[0] === str[str.length - 1]) {
+    return palindrome(str.slice(1, str.length - 1));
+  } else {
+    return false;
+  }
+
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
